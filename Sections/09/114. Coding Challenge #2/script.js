@@ -799,11 +799,21 @@ for (player in gameScored) {
   counter += 1;
 }
 
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
+
 // 2.
 console.log('---------------------- 2 -----------------------');
 const odds = game.odds;
 console.log((odds.team1 + odds.x + odds.team2) / 3);
 
+const jodds = Object.values(game.odds);
+let average = 0;
+for (const odd of jodds) average += odd;
+
+average /= jodds.length;
+console.log(average);
 // 3.
 console.log('---------------------- 3 -----------------------');
 //console.log(game.team1);
@@ -828,5 +838,34 @@ for (let i = 0; i < teamNames.length; i++) {
   );
 }
 
-// 4.
-console.log('---------------------- 4 -----------------------');
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : 'victory ${game[team]}';
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+// BONUS
+console.log('---------------------- BONUS -----------------------');
+
+console.log(game.scored);
+
+const scoreCount = function (player) {
+  let counter = 0;
+  for (let i = 0; i < game.scored.length; i++) {
+    if (game.scored[i] === player) counter += 1;
+  }
+  return counter;
+};
+
+console.log(scoreCount(game.scored[0]));
+console.log(scoreCount(game.scored[1]));
+console.log(scoreCount(game.scored[3]));
+
+let uniqueArr = [...new Set(game.scored)];
+console.log(uniqueArr);
+
+const scorers = {};
+
+for (const key of uniqueArr) {
+  scorers[key] = scoreCount(key);
+}
+
+console.log(scorers);
