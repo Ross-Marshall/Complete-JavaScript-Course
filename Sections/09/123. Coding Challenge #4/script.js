@@ -1271,9 +1271,9 @@ document.querySelector('button').addEventListener('click', function () {
   lines = trimArray(lines);
   //   //console.log(lines);
 
-  let repeatChar = 1;
+  //let repeatChar = 1;
 
-  for (let l of lines) {
+  for (const [repeatChar, l] of lines.entries()) {
     //let items = l.split('_');
     //let s1 = items[0].toLowerCase();
     //let s2 = items[1].toLowerCase();
@@ -1281,7 +1281,7 @@ document.querySelector('button').addEventListener('click', function () {
 
     let strOut = s1 + s2.replace(s2[0], s2[0].toUpperCase());
     console.log(strOut.padEnd(30) + checkEmoji.repeat(repeatChar));
-    repeatChar += 1;
+    //repeatChar += 1;
   }
 });
 
