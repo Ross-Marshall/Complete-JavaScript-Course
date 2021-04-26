@@ -1274,9 +1274,10 @@ document.querySelector('button').addEventListener('click', function () {
   let repeatChar = 1;
 
   for (let l of lines) {
-    let items = l.split('_');
-    let s1 = items[0].toLowerCase();
-    let s2 = items[1].toLowerCase();
+    //let items = l.split('_');
+    //let s1 = items[0].toLowerCase();
+    //let s2 = items[1].toLowerCase();
+    const [s1, s2] = l.toLowerCase().trim().split('_');
 
     let strOut = s1 + s2.replace(s2[0], s2[0].toUpperCase());
     console.log(strOut.padEnd(30, ' ') + checkEmoji.repeat(repeatChar));
