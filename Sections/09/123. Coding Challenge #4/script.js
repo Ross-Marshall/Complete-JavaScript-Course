@@ -1280,7 +1280,7 @@ document.querySelector('button').addEventListener('click', function () {
     const [s1, s2] = l.toLowerCase().trim().split('_');
 
     let strOut = s1 + s2.replace(s2[0], s2[0].toUpperCase());
-    console.log(strOut.padEnd(30, ' ') + checkEmoji.repeat(repeatChar));
+    console.log(strOut.padEnd(30) + checkEmoji.repeat(repeatChar));
     repeatChar += 1;
   }
 });
